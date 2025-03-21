@@ -131,11 +131,10 @@ export default function AuthOptionsPage() {
                       </div>
                       <div>
                         <h3 className="font-medium text-lg mb-2">
-                          Sign Up as Admin
+                          Sign Up as an Organization/Business
                         </h3>
                         <p className="text-gray-400 text-sm mb-4">
-                          Create an administrator account to manage
-                          organizations and users
+                          Create a business account
                         </p>
                         <div className="flex justify-between items-center">
                           <span className="text-xs text-gray-500">
@@ -200,11 +199,10 @@ export default function AuthOptionsPage() {
                       </div>
                       <div>
                         <h3 className="font-medium text-lg mb-2">
-                          Log In as Admin
+                          Log In as Organization/Business
                         </h3>
                         <p className="text-gray-400 text-sm mb-4">
-                          Access your administrator account to manage
-                          organizations and users
+                          Access your business account
                         </p>
                         <div className="flex justify-between items-center">
                           <span className="text-xs text-gray-500">

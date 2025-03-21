@@ -9,9 +9,12 @@ import {
   LogIn,
   Loader2,
 } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { logIn } from "../../api/Auth";
 
 export default function UserLoginForm() {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -80,11 +83,21 @@ export default function UserLoginForm() {
 
     try {
       // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      const response: any = await logIn({
+        email: formData.email,
+        password: formData.password,
+      });
+
+      if (response?.data) {
+        alert("Login Successful");
+      }
+
+      // Store user info in localStorage (better to store the full object as a JSON string)
+      localStorage.setItem("UserInfo", JSON.stringify(response.data));
 
       // For demo purposes, let's simulate a successful login
       // In a real app, you would validate credentials with your backend
-
+      navigate("/home");
       // Simulate successful login and redirect
       console.log("Login successful", formData);
 
@@ -92,7 +105,6 @@ export default function UserLoginForm() {
       // router.push('/dashboard')
 
       // For demo, just log the success
-      window.location.href = "/home";
     } catch (error) {
       // Handle error
       console.error("Login error:", error);

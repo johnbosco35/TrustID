@@ -1,15 +1,19 @@
-"use client";
-
 import { useState } from "react";
 import { Search } from "lucide-react";
 
 export default function Header() {
   const [searchQuery, setSearchQuery] = useState("");
 
+  const userInfo = JSON.parse(localStorage.getItem("UserInfo") || "{}");
+
   return (
     <header className="w-full bg-[#171923] py-3 px-4 flex items-center justify-between">
-      <div className="flex-1">
+      <div className="flex-1 text-white">
         {/* Left side content can go here if needed */}
+        <div className="flex items-center">
+          <p>Hey!</p>
+          <span className="ml-3">{userInfo.name}</span>
+        </div>
       </div>
 
       <div className="flex items-center gap-4">
@@ -26,7 +30,7 @@ export default function Header() {
 
         {/* Custom avatar implementation without using shadcn components */}
         <div className="h-8 w-8 rounded-full bg-gray-600 overflow-hidden flex items-center justify-center text-white">
-          <img
+          {/* <img
             src="/placeholder.svg?height=32&width=32"
             alt="User"
             className="h-full w-full object-cover"
@@ -35,7 +39,9 @@ export default function Header() {
               e.currentTarget.style.display = "none";
               // e.currentTarget.parentElement.innerHTML = "U";
             }}
-          />
+          /> */}
+
+          <p>{userInfo?.name?.charAt()}</p>
         </div>
       </div>
     </header>

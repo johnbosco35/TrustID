@@ -12,6 +12,7 @@ import {
   Loader2,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { signUp } from "../../api/Auth";
 
 export default function UserSignupForm() {
   const [formData, setFormData] = useState({
@@ -134,10 +135,21 @@ export default function UserSignupForm() {
 
     try {
       // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      signUp({
+        email: formData.email,
+        username: formData.fullName,
+        password: formData.password,
+      })
+        .then(() => {
+          alert("SignUp Successful");
+          setIsSuccess(true);
+          // navigate("/user-login");
+        })
+        .catch((error: any) => {
+          console.log(error);
+        });
 
       // Success
-      setIsSuccess(true);
 
       // In a real app, you would redirect the user or show a success message
     } catch (error) {
